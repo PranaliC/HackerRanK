@@ -1,17 +1,6 @@
 package com.hackerrank.algorithms.warmup;
 
-import java.io.*;
-import java.math.*;
-import java.security.*;
-import java.text.*;
-import java.util.*;
-import java.util.concurrent.*;
-import java.util.function.*;
-import java.util.regex.*;
-import java.util.stream.*;
-
-import static java.util.stream.Collectors.joining;
-import static java.util.stream.Collectors.toList;
+import java.util.List;
 
 /**
  * Given a square matrix, calculate the absolute difference between the sums of its diagonals.
@@ -70,7 +59,7 @@ import static java.util.stream.Collectors.toList;
  * Note: |x| is the absolute value of x
  */
 
-class Result {
+public class DiagonalDifference {
 
     /*
      * Complete the 'diagonalDifference' function below.
@@ -89,34 +78,5 @@ class Result {
             secondarySum = secondarySum + arr.get(i).get(j);
         }
         return Math.abs(primarySum - secondarySum);
-    }
-
-}
-
-public class DiagonalDifference {
-    public static void main(String[] args) throws IOException {
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        // BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.out.));
-
-        int n = Integer.parseInt(bufferedReader.readLine().trim());
-
-        List<List<Integer>> arr = new ArrayList<>();
-
-        IntStream.range(0, n).forEach(i -> {
-            try {
-                arr.add(
-                        Stream.of(bufferedReader.readLine().replaceAll("\\s+$", "").split(" "))
-                                .map(Integer::parseInt)
-                                .collect(toList())
-                );
-            } catch (IOException ex) {
-                throw new RuntimeException(ex);
-            }
-        });
-
-        int result = Result.diagonalDifference(arr);
-
-        System.out.println(result);
-        bufferedReader.close();
     }
 }
